@@ -1,5 +1,5 @@
 # Settlix Interface
-
+Settlix is a merchant payment and settlement platform built on Stellar that enables businesses to accept QR-code payments and receive instant settlements in digital assets such as USDC and XLM. It provides a real-time dashboard for tracking transactions, revenue, analytics, and payment notifications. Customers can seamlessly scan, pay, and receive digital receipts through supported Stellar wallets like Freighter and Albedo. Designed as a modern, secure, and PWA-ready solution, Settlix helps merchants adopt fast, low-cost digital payments with minimal friction.
 <div align="center">
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.1.0-black)
