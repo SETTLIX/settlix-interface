@@ -14,7 +14,7 @@ Modern frontend for Settlix merchant payment platform on Stellar.
 
 ---
 
-## 🌟 Features
+## Features
 
 ### For Merchants
  **QR Code Payments**: Generate dynamic QR codes for customer payments
