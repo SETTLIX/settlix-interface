@@ -17,25 +17,24 @@ Modern frontend for Settlix merchant payment platform on Stellar.
 ## 🌟 Features
 
 ### For Merchants
-- 💳 **QR Code Payments**: Generate dynamic QR codes for customer payments
-- 📊 **Real-time Dashboard**: Track payments, settlements, and analytics
-- ⚡ **Instant Settlement**: View settlements as they happen
-- 📈 **Analytics**: Transaction volume, revenue tracking, customer insights
-- 🔔 **Notifications**: Real-time payment alerts
+ **QR Code Payments**: Generate dynamic QR codes for customer payments
+**Real-time Dashboard**: Track payments, settlements, and analytics
+ **Instant Settlement**: View settlements as they happen
+ **Analytics**: Transaction volume, revenue tracking, customer insights
+**Notifications**: Real-time payment alerts
 
 ### For Customers
-- 📱 **Scan & Pay**: Simple QR code scanning flow
-- 🔐 **Wallet Integration**: Freighter, Albedo wallet support
-- 💸 **Multi-Currency**: USDC, XLM, and other Stellar assets
-- 🧾 **Receipt Generation**: Automatic digital receipts
+**Scan & Pay**: Simple QR code scanning flow
+**Wallet Integration**: Freighter, Albedo wallet support
+**Multi-Currency**: USDC, XLM, and other Stellar assets
+**Receipt Generation**: Automatic digital receipts
 
 ### Technical Features
-- 🎨 **Modern UI**: Clean, responsive design with TailwindCSS
-- 🔄 **Real-time Updates**: WebSocket-based payment notifications
-- 🌐 **PWA Ready**: Install as mobile/desktop app
-- 🔒 **Secure**: Client-side wallet authentication
+**Modern UI**: Clean, responsive design with TailwindCSS
+**Real-time Updates**: WebSocket-based payment notifications
+**PWA Ready**: Install as mobile/desktop app
+**Secure**: Client-side wallet authentication
 
-## 🚀 Getting Started
 
 ### Prerequisites
 
