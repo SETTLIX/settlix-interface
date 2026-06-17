@@ -85,7 +85,7 @@ NEXT_PUBLIC_ENABLE_ANALYTICS=true
 NEXT_PUBLIC_ENABLE_NOTIFICATIONS=true
 ```
 
-## 📖 Usage
+## Usage
 
 ### Merchant Flow
 
@@ -139,7 +139,7 @@ Use any QR scanner or Settlix mobile app to scan merchant QR code.
 
 Connect wallet and approve transaction. Payment settles instantly.
 
-## 🎨 Pages
+## Pages
 
 ### Public Pages
 - `/` - Landing page with features
