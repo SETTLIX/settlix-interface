@@ -194,7 +194,7 @@ src/
     └── useContract.ts             # Contract interaction hook
 ```
 
-## 🛠️ Development
+## Development
 
 ### Build Commands
 
@@ -221,7 +221,7 @@ npm run type-check
 - Prettier for formatting
 - TypeScript for type safety
 
-## 🎨 Customization
+## Customization
 
 ### Theme
 
@@ -244,14 +244,14 @@ module.exports = {
 
 All components use TailwindCSS for styling. No CSS modules or styled-components.
 
-## 📱 Mobile Support
+## Mobile Support
 
 - Responsive design for all screen sizes
 - Touch-optimized interactions
 - PWA installable
 - Camera access for QR scanning
 
-## 🔒 Security
+## Security
 
 - Client-side wallet signatures
 - No private keys stored
@@ -259,7 +259,7 @@ All components use TailwindCSS for styling. No CSS modules or styled-components.
 - CSRF tokens
 - Content Security Policy headers
 
-## 🚢 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
@@ -290,14 +290,14 @@ Set all environment variables in your deployment platform:
 - Vercel: Project Settings → Environment Variables
 - Docker: Use `.env` file or `-e` flags
 
-## 📊 Analytics
+## Analytics
 
 Integration with:
 - Google Analytics
 - Mixpanel
 - Custom event tracking
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create feature branch (`git checkout -b feature/amazing`)
@@ -305,11 +305,8 @@ Integration with:
 4. Push to branch (`git push origin feature/amazing`)
 5. Open Pull Request
 
-## 📄 License
 
-MIT License
-
-## 🔗 Links
+## Links
 
 - **Contracts**: [settlix-contracts](https://github.com/SETTLIX/settlix-contracts)
 - **Oracle**: [settlix-oracle](https://github.com/SETTLIX/settlix-oracle)
