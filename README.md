@@ -67,6 +67,9 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) and the
 [Code of Conduct](CODE_OF_CONDUCT.md). Contributors are listed in
 [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
+Everyone who has forked the repository is listed under
+[Forks](CONTRIBUTORS.md#forks). Sync your fork with `main` before starting work.
+
 ## License
 
 [MIT](LICENSE)
