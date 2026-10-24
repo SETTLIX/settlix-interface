@@ -2,12 +2,22 @@ import Link from 'next/link';
 import { ConnectButton } from './ConnectButton';
 import { Ticker } from './Ticker';
 
+/** The Settlix mark: one unbroken lime stroke, money moving in a single motion. Source: public/logo.svg. */
+export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+      <rect x="5" y="5" width="41" height="41" rx="12" fill="#0B0B0F" />
+      <rect x="1.5" y="1.5" width="41" height="41" rx="12" fill="#5B2EFF" stroke="#0B0B0F" strokeWidth="3" />
+      <path d="M28.14 10.2A7.5 7.5 0 1 0 22 22A7.5 7.5 0 1 1 15.86 33.8" fill="none" stroke="#0B0B0F" strokeWidth="8.6" strokeLinecap="round" />
+      <path d="M28.14 10.2A7.5 7.5 0 1 0 22 22A7.5 7.5 0 1 1 15.86 33.8" fill="none" stroke="#C6F432" strokeWidth="4.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function Logo() {
   return (
-    <Link href="/" className="group flex items-center gap-2" aria-label="Settlix home">
-      <span className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-violet shadow-hard-sm transition-transform group-hover:-rotate-6">
-        <span className="h-3.5 w-3.5 rounded-full border-2 border-ink bg-lime" />
-      </span>
+    <Link href="/" className="group flex items-center gap-2.5" aria-label="Settlix home">
+      <LogoMark className="h-10 w-10 transition-transform group-hover:-rotate-6" />
       <span className="font-display text-xl font-black tracking-tight">SETTLIX</span>
     </Link>
   );
