@@ -41,7 +41,7 @@ export function ApplyForm({ onDone }: { onDone: () => void }) {
       </div>
       <label className="block">
         <span className="label">Business name</span>
-        <input className="field" value={name} onChange={(e) => setName(e.target.value)} maxLength={64} required placeholder="Ada Fabrics" />
+        <input className="field" value={name} onChange={(e) => setName(e.target.value)} maxLength={64} required placeholder="Northside Coffee" />
       </label>
       <label className="block">
         <span className="label">Business registration number</span>

@@ -22,14 +22,14 @@ describe('status', () => {
 describe('Pass', () => {
   it('renders merchant, amount, rows, sticker and a barcode label from the id', () => {
     render(
-      <Pass merchant="Ada Fabrics" reference="ORDER-1001" id={42} amount="25.00" code="XLM" label="Paid in full" tone="Paid" sticker={<Sticker>Settled</Sticker>}>
-        <Row label="To merchant">24.875 XLM</Row>
+      <Pass merchant="Northside Coffee" reference="TAB-0417" id={42} amount="25.00" code="XLM" label="Paid in full" tone="Paid" sticker={<Sticker>Settled</Sticker>}>
+        <Row label="To merchant">18.308 USDC</Row>
       </Pass>,
     );
-    expect(screen.getByText('Ada Fabrics')).toBeTruthy();
-    expect(screen.getByText('24.875 XLM')).toBeTruthy();
+    expect(screen.getByText('Northside Coffee')).toBeTruthy();
+    expect(screen.getByText('18.308 USDC')).toBeTruthy();
     expect(screen.getByText('Settled')).toBeTruthy();
-    expect(screen.getByText('ref ORDER-1001')).toBeTruthy();
+    expect(screen.getByText('ref TAB-0417')).toBeTruthy();
     expect(screen.getByText('SETTLIX·00000042')).toBeTruthy();
   });
 });

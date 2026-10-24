@@ -51,9 +51,9 @@ export default function Home() {
           <div className="absolute -left-6 -top-6 hidden h-28 w-28 rounded-full border-2 border-ink bg-sun sm:block" aria-hidden />
           <div className="absolute -bottom-5 -right-5 hidden h-20 w-20 rotate-12 rounded-2xl border-2 border-ink bg-coral sm:block" aria-hidden />
           <div className="relative rotate-[2deg]">
-            <Pass merchant="Ada Fabrics" reference="ORDER-1001" id={1} amount="25.00" code="XLM" label="Paid in full" tone="Paid" sticker={<Sticker>Settled</Sticker>}>
-              <Row label="To merchant">24.875 XLM</Row>
-              <Row label="Platform fee">0.125 XLM</Row>
+            <Pass merchant="Northside Coffee" reference="TAB-0417" id={417} amount="18.40" code="USDC" label="Paid in full" tone="Paid" sticker={<Sticker>Settled</Sticker>}>
+              <Row label="To merchant">18.308 USDC</Row>
+              <Row label="Platform fee">0.092 USDC</Row>
             </Pass>
           </div>
         </div>
