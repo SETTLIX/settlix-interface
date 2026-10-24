@@ -36,8 +36,8 @@ export function ApplyForm({ onDone }: { onDone: () => void }) {
     <form onSubmit={submit} className="mx-auto max-w-lg space-y-5">
       <div>
         <p className="eyebrow">Step 1 of 2</p>
-        <h1 className="mt-2 font-display text-4xl">Apply as a merchant</h1>
-        <p className="mt-2 text-muted">The platform reviews applications before a merchant can issue invoices.</p>
+        <h1 className="mt-2 font-display text-4xl font-black">Apply as a merchant</h1>
+        <p className="mt-2 text-ink/60">The platform reviews applications before a merchant can issue invoices.</p>
       </div>
       <label className="block">
         <span className="label">Business name</span>
@@ -46,12 +46,12 @@ export function ApplyForm({ onDone }: { onDone: () => void }) {
       <label className="block">
         <span className="label">Business registration number</span>
         <input className="field font-mono" value={businessId} onChange={(e) => setBusinessId(e.target.value)} required placeholder="RC-123456" />
-        <span className="mt-1.5 block text-xs text-muted">Hashed with SHA-256 in your browser. Only the hash is stored on-chain.</span>
+        <span className="mt-1.5 block text-xs text-ink/60">Hashed with SHA-256 in your browser. Only the hash is stored on-chain.</span>
       </label>
       <label className="block">
         <span className="label">Payout address</span>
         <input className="field font-mono text-xs" value={payout} onChange={(e) => setPayout(e.target.value)} required pattern="G[A-Z2-7]{55}" />
-        <span className="mt-1.5 block text-xs text-muted">Where customer payments arrive. Defaults to this wallet; another address must co-sign.</span>
+        <span className="mt-1.5 block text-xs text-ink/60">Where customer payments arrive. Defaults to this wallet; another address must co-sign.</span>
       </label>
       {error && <Notice tone="error">{error}</Notice>}
       <button className="btn-primary w-full py-3" disabled={busy}>

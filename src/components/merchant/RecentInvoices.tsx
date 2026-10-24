@@ -18,16 +18,16 @@ export function RecentInvoices({ merchant, refreshKey, onSelect }: { merchant: s
   );
 
   if (loading && !data) return <Spinner label="Loading invoices" />;
-  if (!data?.length) return <p className="text-sm text-muted">Invoices you create in this browser appear here.</p>;
+  if (!data?.length) return <p className="text-sm text-ink/60">Invoices you create in this browser appear here.</p>;
 
   return (
-    <ul className="divide-y divide-rule">
+    <ul className="divide-y-2 divide-dashed divide-ink/15">
       {data.map((inv) => (
         <li key={inv.id}>
-          <button onClick={() => onSelect(inv)} className="flex w-full items-center justify-between gap-3 py-3 text-left hover:bg-paper/60">
+          <button onClick={() => onSelect(inv)} className="flex w-full items-center justify-between gap-3 py-3 text-left rounded-xl px-2 hover:bg-sun-soft">
             <span>
               <span className="block font-mono text-sm">{inv.reference}</span>
-              <span className="text-xs text-muted">#{inv.id} · {inv.createdAt.toLocaleString()}</span>
+              <span className="text-xs text-ink/60">#{inv.id} · {inv.createdAt.toLocaleString()}</span>
             </span>
             <span className="text-right">
               <span className="block font-mono text-sm">
