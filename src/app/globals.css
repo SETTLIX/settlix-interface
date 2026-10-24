@@ -4,59 +4,61 @@
 
 @layer base {
   html {
-    @apply bg-paper text-ink antialiased;
+    @apply bg-field text-ink antialiased;
   }
   body {
     @apply min-h-screen font-sans;
+    /* A faint dot grid, like graph paper for money. */
+    background-image: radial-gradient(#0b0b0f14 1px, transparent 1px);
+    background-size: 22px 22px;
   }
   ::selection {
-    @apply bg-accent-soft;
+    @apply bg-lime text-ink;
   }
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-accent;
+    @apply outline outline-[3px] outline-offset-2 outline-violet;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink px-5 py-2.5 text-sm font-bold shadow-hard-sm transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard active:translate-x-[3px] active:translate-y-[3px] active:shadow-none disabled:pointer-events-none disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-ink text-card hover:bg-accent-dark;
+    @apply btn bg-ink text-field;
   }
   .btn-accent {
-    @apply btn bg-accent text-card hover:bg-accent-dark;
+    @apply btn bg-violet text-field;
   }
   .btn-ghost {
-    @apply btn border border-ink/20 hover:border-ink hover:bg-card;
+    @apply btn bg-field text-ink;
+  }
+  .btn-lime {
+    @apply btn bg-lime text-ink;
   }
   .label {
-    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted;
+    @apply mb-1.5 block font-display text-[11px] font-bold uppercase tracking-[0.14em];
   }
   .field {
-    @apply w-full rounded-md border border-rule bg-card px-3 py-2.5 text-ink placeholder:text-muted/60 focus:border-ink focus:outline-none;
+    @apply w-full rounded-xl border-2 border-ink bg-field px-3.5 py-3 font-medium text-ink shadow-hard-sm placeholder:text-ink/30 focus:bg-sun-soft focus:outline-none;
   }
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent;
+    @apply inline-block rounded-full border-2 border-ink bg-sun px-3 py-0.5 font-display text-[11px] font-bold uppercase tracking-[0.14em];
   }
-  /* Torn-paper edge for receipts: a row of half-circles cut from the background. */
-  .perforated {
-    --hole: 7px;
-    -webkit-mask:
-      radial-gradient(circle var(--hole) at 50% 0, transparent 98%, #000) 50% 0 / calc(var(--hole) * 2.6) 51% repeat-x,
-      radial-gradient(circle var(--hole) at 50% 100%, transparent 98%, #000) 50% 100% / calc(var(--hole) * 2.6) 51% repeat-x;
-    mask:
-      radial-gradient(circle var(--hole) at 50% 0, transparent 98%, #000) 50% 0 / calc(var(--hole) * 2.6) 51% repeat-x,
-      radial-gradient(circle var(--hole) at 50% 100%, transparent 98%, #000) 50% 100% / calc(var(--hole) * 2.6) 51% repeat-x;
+  .panel {
+    @apply rounded-[22px] border-2 border-ink bg-field shadow-hard;
   }
-  .leader {
-    @apply flex items-baseline gap-2;
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border-2 border-ink px-2.5 py-0.5 text-xs font-bold;
   }
-  .leader::after {
-    content: '';
-    @apply order-2 flex-1 border-b border-dotted border-ink/30;
-  }
-  .leader > :last-child {
-    @apply order-3;
+  /* A barcode drawn from stripes; --seed varies the rhythm per invoice. */
+  .barcode {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #0b0b0f 0 2px,
+      transparent 2px calc(3px + var(--seed, 1) * 1px),
+      #0b0b0f calc(3px + var(--seed, 1) * 1px) calc(7px + var(--seed, 1) * 1px),
+      transparent calc(7px + var(--seed, 1) * 1px) calc(9px + var(--seed, 1) * 1px)
+    );
   }
 }

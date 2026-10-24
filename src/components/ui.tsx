@@ -1,24 +1,30 @@
 import type { ReactNode } from 'react';
 
-export function Notice({ tone = 'info', title, children }: { tone?: 'info' | 'error' | 'success' | 'caution'; title?: string; children: ReactNode }) {
-  const styles = {
-    info: 'border-ink/15 bg-card',
-    error: 'border-accent/40 bg-accent-soft text-accent-dark',
-    success: 'border-settled/40 bg-settled-soft text-settled',
-    caution: 'border-caution/40 bg-caution-soft text-caution',
-  }[tone];
+const TONES = {
+  info: 'bg-sky-soft',
+  error: 'bg-coral-soft',
+  success: 'bg-lime-soft',
+  caution: 'bg-sun-soft',
+} as const;
+const DOTS = { info: 'bg-sky', error: 'bg-coral', success: 'bg-lime', caution: 'bg-sun' } as const;
+
+export function Notice({ tone = 'info', title, children }: { tone?: keyof typeof TONES; title?: string; children: ReactNode }) {
   return (
-    <div role={tone === 'error' ? 'alert' : 'status'} className={`rounded-md border px-4 py-3 text-sm ${styles}`}>
-      {title && <p className="mb-0.5 font-semibold">{title}</p>}
-      <div>{children}</div>
+    <div role={tone === 'error' ? 'alert' : 'status'} className={`flex gap-3 rounded-2xl border-2 border-ink px-4 py-3 text-sm shadow-hard-sm ${TONES[tone]}`}>
+      <span className={`mt-1 h-3 w-3 shrink-0 rounded-full border-2 border-ink ${DOTS[tone]}`} aria-hidden />
+      <div>
+        {title && <p className="font-display text-xs font-bold uppercase tracking-wider">{title}</p>}
+        <div className={title ? 'mt-0.5' : ''}>{children}</div>
+      </div>
     </div>
   );
 }
 
-export function Stamp({ children, tone = 'settled' }: { children: ReactNode; tone?: 'settled' | 'accent' | 'muted' }) {
-  const color = { settled: 'border-settled text-settled', accent: 'border-accent text-accent', muted: 'border-muted text-muted' }[tone];
+/** A tilted sticker, for big state changes. */
+export function Sticker({ children, tone = 'lime' }: { children: ReactNode; tone?: 'lime' | 'sun' | 'coral' | 'fog' }) {
+  const bg = { lime: 'bg-lime', sun: 'bg-sun', coral: 'bg-coral text-field', fog: 'bg-fog' }[tone];
   return (
-    <span className={`inline-block -rotate-6 rounded border-[3px] border-double px-3 py-1 font-display text-2xl font-black uppercase tracking-widest opacity-90 ${color}`}>
+    <span className={`inline-block -rotate-6 animate-pop rounded-xl border-2 border-ink px-3 py-1 font-display text-sm font-black uppercase tracking-wider shadow-hard-sm ${bg}`}>
       {children}
     </span>
   );
@@ -26,22 +32,34 @@ export function Stamp({ children, tone = 'settled' }: { children: ReactNode; ton
 
 export function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="leader py-1 text-sm">
-      <span className="text-muted">{label}</span>
-      <span className="text-right font-mono">{children}</span>
+    <div className="flex items-baseline justify-between gap-4 border-b-2 border-dashed border-ink/15 py-2 text-sm last:border-0">
+      <span className="font-semibold text-ink/60">{label}</span>
+      <span className="text-right font-mono font-semibold">{children}</span>
     </div>
   );
 }
 
 export function Spinner({ label = 'Loading' }: { label?: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-sm text-muted" role="status">
-      <span className="h-3 w-3 animate-spin rounded-full border-2 border-muted border-t-transparent" />
+    <span className="inline-flex items-center gap-3 font-display text-xs font-bold uppercase tracking-wider" role="status">
+      <span className="flex gap-1" aria-hidden>
+        {[0, 1, 2].map((i) => (
+          <span key={i} className="h-2.5 w-2.5 animate-bounce rounded-sm border-2 border-ink bg-violet" style={{ animationDelay: `${i * 120}ms` }} />
+        ))}
+      </span>
       {label}
     </span>
   );
 }
 
 export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <section className={`rounded-lg border border-rule bg-card p-6 ${className}`}>{children}</section>;
+  return <section className={`panel p-6 ${className}`}>{children}</section>;
+}
+
+export function Check({ className = 'h-6 w-6' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M4 12.5l5 5L20 6.5" />
+    </svg>
+  );
 }

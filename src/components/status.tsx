@@ -1,12 +1,12 @@
 import type { InvoiceStatus } from '@/lib/contracts';
 
 const LABELS: Record<InvoiceStatus | 'Expired', [string, string]> = {
-  Open: ['Awaiting payment', 'bg-caution-soft text-caution'],
-  Expired: ['Expired', 'bg-rule text-muted'],
-  Paid: ['Paid', 'bg-settled-soft text-settled'],
-  Cancelled: ['Cancelled', 'bg-rule text-muted'],
-  PartiallyRefunded: ['Partly refunded', 'bg-accent-soft text-accent-dark'],
-  Refunded: ['Refunded', 'bg-accent-soft text-accent-dark'],
+  Open: ['Waiting', 'bg-sun'],
+  Expired: ['Expired', 'bg-fog'],
+  Paid: ['Settled', 'bg-lime'],
+  Cancelled: ['Void', 'bg-fog'],
+  PartiallyRefunded: ['Part refund', 'bg-coral-soft'],
+  Refunded: ['Refunded', 'bg-coral-soft'],
 };
 
 export function effectiveStatus(status: InvoiceStatus, expiresAt: Date, now = new Date()): InvoiceStatus | 'Expired' {
@@ -14,6 +14,6 @@ export function effectiveStatus(status: InvoiceStatus, expiresAt: Date, now = ne
 }
 
 export function StatusPill({ status }: { status: InvoiceStatus | 'Expired' }) {
-  const [label, style] = LABELS[status];
-  return <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${style}`}>{label}</span>;
+  const [label, bg] = LABELS[status];
+  return <span className={`chip font-display uppercase tracking-wider ${bg}`}>{label}</span>;
 }

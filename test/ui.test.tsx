@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Receipt } from '@/components/Receipt';
+import { Pass } from '@/components/Pass';
 import { effectiveStatus, StatusPill } from '@/components/status';
-import { Row, Stamp } from '@/components/ui';
+import { Row, Sticker } from '@/components/ui';
 import { recentInvoices, rememberInvoice } from '@/lib/recent';
 
 describe('status', () => {
@@ -15,20 +15,22 @@ describe('status', () => {
 
   it('labels statuses for people', () => {
     render(<StatusPill status="Open" />);
-    expect(screen.getByText('Awaiting payment')).toBeTruthy();
+    expect(screen.getByText('Waiting')).toBeTruthy();
   });
 });
 
-describe('Receipt', () => {
-  it('renders title, rows and stamp', () => {
+describe('Pass', () => {
+  it('renders merchant, amount, rows, sticker and a barcode label from the id', () => {
     render(
-      <Receipt title="Ada Fabrics" subtitle="ORDER-1001" stamp={<Stamp>Paid</Stamp>}>
-        <Row label="Total">25.00 XLM</Row>
-      </Receipt>,
+      <Pass merchant="Ada Fabrics" reference="ORDER-1001" id={42} amount="25.00" code="XLM" label="Paid in full" tone="Paid" sticker={<Sticker>Settled</Sticker>}>
+        <Row label="To merchant">24.875 XLM</Row>
+      </Pass>,
     );
     expect(screen.getByText('Ada Fabrics')).toBeTruthy();
-    expect(screen.getByText('25.00 XLM')).toBeTruthy();
-    expect(screen.getByText('Paid')).toBeTruthy();
+    expect(screen.getByText('24.875 XLM')).toBeTruthy();
+    expect(screen.getByText('Settled')).toBeTruthy();
+    expect(screen.getByText('ref ORDER-1001')).toBeTruthy();
+    expect(screen.getByText('SETTLIX·00000042')).toBeTruthy();
   });
 });
 
