@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono, Manrope, Unbounded } from 'next/font/google';
-import { SiteHeader } from '@/components/SiteHeader';
+import { SiteHeader, Wordmark } from '@/components/SiteHeader';
 import { WalletProvider } from '@/lib/wallet';
 import './globals.css';
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">{children}</main>
           <footer className="border-t-2 border-ink bg-ink text-field">
             <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-6 text-sm sm:px-6">
-              <span className="font-display text-lg font-black tracking-tight">SETTLIX</span>
+              <Wordmark className="text-xl" shadow={false} />
               <span className="text-field/70">
                 Open source at{' '}
                 <a className="font-bold text-lime underline-offset-4 hover:underline" href="https://github.com/SETTLIX">github.com/SETTLIX</a>
