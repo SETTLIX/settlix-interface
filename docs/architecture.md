@@ -7,7 +7,7 @@ src/
     merchant/          console: apply, invoice, QR
     pay/[id]/          customer pay page
     admin/             merchant approvals
-  components/          Receipt, status pills, wallet gate, merchant panels
+  components/          Pass, Ticker, stickers, status pills, wallet gate, merchant panels
   lib/
     config.ts          network, contract and token IDs (env with testnet defaults)
     contracts.ts       Soroban client: reads by simulation, writes via a Signer
@@ -51,7 +51,18 @@ the chain on that page, so a QR code cannot be edited to change the amount.
 
 ## Design
 
-Receipt paper (`paper`, `card`), ink, one terracotta accent, and a ledger
-green reserved for settled money. Fraunces for display, IBM Plex Sans for
-text, IBM Plex Mono for amounts and addresses. Tokens are in
-`tailwind.config.ts`.
+Neo-brutalist: a white field with a faint dot grid, 2 px ink outlines, hard
+offset shadows, and flat color blocks where each color means one thing:
+violet for action and open money, lime for settled, sun for waiting, coral
+for problems, and sky for information. Unbounded is the display face,
+Manrope the text face, and JetBrains Mono is used for figures. Signature
+pieces:
+
+- `Pass`: the invoice as a transit pass, with a colored top half that changes
+  with state, a punched tear line, and a barcode generated from the id.
+- `Ticker`: live oracle prices and the on-chain fee scrolling under the
+  header.
+- `Sticker`: tilted labels for big state changes.
+
+Tokens are in `tailwind.config.ts`, and component classes (`.btn-*`,
+`.field`, `.panel`, `.chip`) are in `globals.css`.

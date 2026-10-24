@@ -18,7 +18,7 @@ Part of the Settlix stack:
 | --- | --- | --- |
 | `/` | everyone | What Settlix does, with the live fee rate read from the settlement contract |
 | `/merchant` | merchants | Apply (business ID is hashed in the browser), wait for approval, then create invoices priced in USD or in the asset, and show a QR code that turns into a PAID stamp by itself once the customer pays |
-| `/pay/[id]` | customers | The invoice as a receipt; pay it with Freighter in one transaction |
+| `/pay/[id]` | customers | The invoice as a transit pass; pay it with Freighter in one transaction |
 | `/admin` | registry admin | Look up an applicant and approve it |
 
 Everything is read from and written to the contracts directly through
