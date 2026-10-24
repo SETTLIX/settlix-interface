@@ -53,8 +53,8 @@ function Approvals() {
     <div className="mx-auto max-w-xl space-y-6">
       <div>
         <p className="eyebrow">Platform admin</p>
-        <h1 className="mt-2 font-display text-4xl">Merchant approvals</h1>
-        <p className="mt-2 text-muted">
+        <h1 className="mt-2 font-display text-4xl font-black">Merchant approvals</h1>
+        <p className="mt-2 text-ink/60">
           Check the applicant&apos;s documents off-chain, confirm the SHA-256 of their registration number matches the hash below, then approve.
         </p>
       </div>
@@ -65,13 +65,13 @@ function Approvals() {
       {merchant === null && <Notice>No application from that address.</Notice>}
       {merchant && (
         <Card>
-          <p className="font-display text-2xl">{merchant.name}</p>
+          <p className="font-display text-2xl font-black">{merchant.name}</p>
           <div className="mt-3">
             <Row label="Status">{merchant.status}</Row>
             <Row label="Payout address">{shortAddress(merchant.settlementAddress, 6)}</Row>
             <Row label="Applied">{merchant.registeredAt.toLocaleString()}</Row>
           </div>
-          <p className="mt-3 break-all font-mono text-[11px] text-muted">business hash {merchant.businessHash}</p>
+          <p className="mt-3 break-all font-mono text-[11px] text-ink/60">business hash {merchant.businessHash}</p>
           {merchant.status === 'Pending' && (
             <button className="btn-accent mt-5 w-full" onClick={approve} disabled={busy}>
               {busy ? 'Confirm in your wallet...' : 'Approve merchant'}

@@ -39,14 +39,14 @@ function Console() {
       <div className="mx-auto max-w-lg space-y-6">
         <div>
           <p className="eyebrow">{m.status === 'Pending' ? 'Step 2 of 2' : 'Account on hold'}</p>
-          <h1 className="mt-2 font-display text-4xl">{m.status === 'Pending' ? 'Application under review' : 'Merchant suspended'}</h1>
-          <p className="mt-2 text-muted">
+          <h1 className="mt-2 font-display text-4xl font-black">{m.status === 'Pending' ? 'Application under review' : 'Merchant suspended'}</h1>
+          <p className="mt-2 text-ink/60">
             {m.status === 'Pending'
               ? 'A platform admin approves new merchants. This page updates by itself once you are approved.'
               : 'The platform has suspended this merchant. Open invoices cannot be paid until it is reinstated.'}
           </p>
         </div>
-        <Card>
+        <Card className={m.status === 'Pending' ? 'bg-sun-soft' : 'bg-coral-soft'}>
           <Row label="Business">{m.name}</Row>
           <Row label="Payout address">{shortAddress(m.settlementAddress, 6)}</Row>
           <Row label="Business ID hash">{m.businessHash.slice(0, 16)}...</Row>
@@ -62,16 +62,16 @@ function Console() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Merchant console</p>
-          <h1 className="mt-2 font-display text-4xl">{m.name}</h1>
+          <h1 className="mt-2 font-display text-4xl font-black">{m.name}</h1>
         </div>
-        <p className="font-mono text-xs text-muted">
+        <p className="chip bg-sky font-mono">
           payouts to {shortAddress(m.settlementAddress, 6)} · fee {fee.data === undefined ? '...' : `${feeBps / 100}%`}
         </p>
       </div>
       <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
         <div className="space-y-8">
           <Card>
-            <h2 className="mb-5 font-display text-2xl">New invoice</h2>
+            <h2 className="mb-5 font-display text-2xl font-black">New invoice</h2>
             <NewInvoiceForm
               feeBps={feeBps}
               onCreated={(inv) => {
@@ -81,7 +81,7 @@ function Console() {
             />
           </Card>
           <Card>
-            <h2 className="mb-3 font-display text-2xl">Recent invoices</h2>
+            <h2 className="mb-3 font-display text-2xl font-black">Recent invoices</h2>
             <RecentInvoices merchant={address!} refreshKey={created} onSelect={setCurrent} />
           </Card>
         </div>
@@ -89,8 +89,16 @@ function Console() {
           {current ? (
             <InvoiceQR key={current.id} initial={current} feeBps={feeBps} />
           ) : (
-            <div className="flex h-72 items-center justify-center rounded-lg border border-dashed border-ink/25 p-6 text-center text-sm text-muted">
-              Create an invoice and its QR code shows here, ready for the customer to scan.
+            <div className="grid h-80 place-items-center rounded-[26px] border-2 border-dashed border-ink bg-violet-soft p-8 text-center">
+              <div>
+                <div className="mx-auto grid h-16 w-16 grid-cols-3 gap-1 rounded-xl border-2 border-ink bg-field p-2" aria-hidden>
+                  {[1, 0, 1, 0, 1, 0, 1, 1, 0].map((on, i) => (
+                    <span key={i} className={on ? 'rounded-sm bg-ink' : ''} />
+                  ))}
+                </div>
+                <p className="mt-4 font-display text-sm font-black uppercase">QR appears here</p>
+                <p className="mt-1 text-sm text-ink/60">Create an invoice and hold this screen up to the customer.</p>
+              </div>
             </div>
           )}
         </aside>

@@ -3,7 +3,18 @@
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning:
 [SemVer](https://semver.org/).
 
-## [0.2.0] - Unreleased
+## [Unreleased]
+
+### Changed
+
+- New visual identity, distinct from other Stellar POS projects:
+  neo-brutalist white field, ink outlines, hard shadows, and violet, lime,
+  sun, coral and sky blocks; Unbounded, Manrope and JetBrains Mono. Invoices
+  are shown as a transit pass with a generated barcode. A live price ticker
+  reads from settlix-oracle. The landing page is a bento grid with a flow
+  diagram, and the pay page has a settled state.
+
+## [0.2.0] - 2026-10-24
 
 ### Added
 
@@ -16,7 +27,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning:
 - Admin page to look up and approve merchant applications.
 - Soroban client shared by the UI and a testnet smoke test
   (`npm run smoke`).
-- New visual design: receipt paper, ink and terracotta; Fraunces, IBM Plex.
 - Vitest suite, ESLint flat config, CI, dependabot, security headers.
 - README, architecture doc, security policy, contributing guide, code of
   conduct, MIT license, issue forms and PR template.

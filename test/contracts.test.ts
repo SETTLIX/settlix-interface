@@ -33,10 +33,10 @@ describe('contract decoding', () => {
 
   it('decodes a merchant, hex-encoding the business hash', () => {
     const m = parseMerchant({
-      address: 'G1', name: 'Ada Fabrics', business_hash: new Uint8Array(32).fill(0xab), settlement_address: 'G2',
+      address: 'G1', name: 'Northside Coffee', business_hash: new Uint8Array(32).fill(0xab), settlement_address: 'G2',
       status: ['Pending'], registered_at: 0n,
     });
-    expect(m).toMatchObject({ name: 'Ada Fabrics', status: 'Pending', businessHash: 'ab'.repeat(32) });
+    expect(m).toMatchObject({ name: 'Northside Coffee', status: 'Pending', businessHash: 'ab'.repeat(32) });
   });
 });
 

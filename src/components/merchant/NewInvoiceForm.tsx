@@ -72,13 +72,13 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
       <div className="grid grid-cols-2 gap-3">
         <fieldset>
           <legend className="label">Customer pays in</legend>
-          <div className="flex overflow-hidden rounded-md border border-rule">
+          <div className="flex overflow-hidden rounded-full border-2 border-ink shadow-hard-sm">
             {config.tokens.map((t) => (
               <button
                 type="button"
                 key={t.code}
                 onClick={() => setAsset(t.code)}
-                className={`flex-1 py-2.5 text-sm font-semibold ${asset === t.code ? 'bg-ink text-card' : 'bg-card hover:bg-paper'}`}
+                className={`flex-1 py-2.5 text-sm font-semibold ${asset === t.code ? 'bg-violet text-field' : 'bg-field hover:bg-sun-soft'}`}
                 aria-pressed={asset === t.code}
               >
                 {t.code}
@@ -107,7 +107,7 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
             required
             pattern="\d+(\.\d{1,7})?"
           />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-sm text-muted">{priceIn === 'USD' ? 'USD' : asset}</span>
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-sm text-ink/60">{priceIn === 'USD' ? 'USD' : asset}</span>
         </div>
       </label>
 
@@ -127,18 +127,18 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
       </div>
 
       {priceIn === 'USD' && (
-        <p className="text-xs text-muted">
+        <p className="text-xs text-ink/60">
           The amount is converted at a signed oracle quote when you create the invoice; the customer pays exactly that.
         </p>
       )}
       {split && (
-        <div className="rounded-md border border-dashed border-ink/25 px-4 py-2">
+        <div className="rounded-2xl border-2 border-ink bg-lime-soft px-4 py-1">
           <Row label="Customer pays">{formatAmount(preview!)} {asset}</Row>
           <Row label="You receive">{formatAmount(split.net)} {asset}</Row>
         </div>
       )}
       {quote && (
-        <p className="font-mono text-xs text-muted">
+        <p className="font-mono text-xs text-ink/60">
           Last quote: {quote.fiatAmount} USD at {quote.price} = {quote.amount} {quote.asset.code}
         </p>
       )}
