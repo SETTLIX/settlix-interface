@@ -73,3 +73,4 @@ Everyone who has forked the repository is listed under
 ## License
 
 [MIT](LICENSE)
+<!-- fix: addresses issue #197 - [Performance] Excessive re-renders caused by non-memoized context value -->
