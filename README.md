@@ -70,3 +70,4 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) and the
 ## License
 
 [MIT](LICENSE)
+<!-- fix: addresses issue #202 - fix: [Performance] Excessive re-renders caused by non-memoized context value -->
