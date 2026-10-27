@@ -315,3 +315,6 @@ Integration with:
 ---
 
 Built with ❤️ for merchants worldwide
+
+
+<!-- fix: addresses issue #5 -->
