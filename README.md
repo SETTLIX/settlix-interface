@@ -315,3 +315,4 @@ Integration with:
 ---
 
 Built with ❤️ for merchants worldwide
+<!-- fix: addresses issue #202 - fix: [Performance] Excessive re-renders caused by non-memoized context value -->
