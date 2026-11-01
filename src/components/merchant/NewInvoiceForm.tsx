@@ -28,6 +28,16 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  function onAmountChange(raw: string) {
+    // Block negatives early — the payment contract rejects them with a less clear error.
+    if (raw.trim().startsWith('-') || Number(raw) < 0) {
+      setError('The amount must be zero or greater.');
+      return;
+    }
+    setError(null);
+    setAmount(raw);
+  }
+
   let preview: bigint | null = null;
   try {
     preview = priceIn === 'asset' && amount ? toStroops(amount) : null;
@@ -40,6 +50,10 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
     e.preventDefault();
     if (!address) return;
     setError(null);
+    if (amount.trim().startsWith('-') || Number(amount) < 0) {
+      setError('The amount must be zero or greater.');
+      return;
+    }
     try {
       let units: bigint;
       if (priceIn === 'USD') {
@@ -100,12 +114,14 @@ export function NewInvoiceForm({ feeBps, onCreated }: { feeBps: number; onCreate
         <div className="relative">
           <input
             className="field pr-16 font-mono text-2xl"
+            type="number"
             inputMode="decimal"
+            min={0}
+            step="any"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => onAmountChange(e.target.value)}
             placeholder="0.00"
             required
-            pattern="\d+(\.\d{1,7})?"
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-sm text-muted">{priceIn === 'USD' ? 'USD' : asset}</span>
         </div>
